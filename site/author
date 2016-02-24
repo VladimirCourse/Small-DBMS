@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+print_head()
+print_header(check_cookie())
+print_search("authors")
+
+pid = cgi.FieldStorage().getfirst("id")
+print_author_info(pid)
+
+offset = cgi.FieldStorage().getfirst("page")
+
+off = calculate_offset(offset)
+p_range = off[0]
+offset = off[1]
+
+stor = get_storage_params(cgi.FieldStorage())
+params = stor[0]
+param_str = stor[1]
+
+count = print_author_articles(pid, offset)
+print_single_paginator("author", int(count), param_str, p_range)
+
+print_footer()

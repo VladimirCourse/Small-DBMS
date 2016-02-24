@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from helpers import *
+from print_helpers import *
+
+params = {}
+params["email"] = "none"
+params["pass"] = "none"
+set_cookie(params)
+
+print ("Content-Type: text/plain")
+print ("Refresh: 0; url=/articles")
+print ()
+print ("Redirecting...")

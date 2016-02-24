@@ -1,0 +1,7 @@
+#!/usr/bin/python
+ # -*- coding: utf-8 -*- 
+f = open('topbody.html', 'r')
+f2 = open('news.html', 'r')
+s1 = f.read()
+s2 = f2.read()
+print(s1 + s2)

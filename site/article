@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+is_logged = check_cookie()
+
+print_head()
+print_header(is_logged)
+print_search("articles")
+
+pid = cgi.FieldStorage().getfirst("id")
+
+if is_logged: update_article_visits(pid)
+
+print_article_info(pid)
+print_article_authors(pid)
+
+article_type = get_article_type(pid)[0][0]
+
+if article_type == "1":
+	print_article_conf(pid)
+else:
+	print_article_journal(pid)
+
+print_article_rate(pid, is_logged)
+
+print_article_keywords(pid)
+print_similar_articles(pid)
+
+print_footer()

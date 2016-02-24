@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+print_head()
+print_header(check_cookie())
+
+form = cgi.FieldStorage()
+data = form.keys()
+fields = {}
+for i in data:
+	fields[i] = form.getfirst(i)
+
+err = 1
+if not "title" in fields:
+	print_alert("You should enter title!")
+else:
+	if not "begin_page" in fields: fields["begin_page"] = ""
+	if not "end_page" in fields: fields["end_page"] = ""
+
+	if fields["type"] == 0:
+		if not is_issue_exists(fields["id_to"]):
+			print_alert("You enter wrong issue!")
+		else:
+			err = 0
+	else:
+		if not is_conf_exists(fields["id_to"]):
+			print_alert("You enter wrong conference!")
+		else:
+			err = 0
+if err:
+	print_add_article()
+else:
+	if not "doi" in fields: fields["doi"] = ""
+	if not "url" in fields: fields["url"] = ""
+	art_id = add_article(fields)
+	for i in form.getlist("author[]"):
+		authr_id = add_author(i) 
+		add_article_author(art_id, authr_id)
+	if fields["type"] == 0:
+		add_article_issue(art_id, fields["id_to"], fields["begin_page"], fields["end_page"])
+	else:
+		add_article_conf(art_id, fields["id_to"], fields["begin_page"], fields["end_page"])
+
+	print_ok("Added sucsessful!")
+
+print_footer()

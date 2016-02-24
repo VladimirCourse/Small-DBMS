@@ -1,0 +1,5 @@
+#!/usr/bin/python
+ # -*- coding: utf-8 -*- 
+s = "Huinya;OK;243;Termometr:34;Camera:180,676481537835897;"
+res = "Content-type: text/html\nContent-Length:" + str(len(s)) + "\n\n" + s
+print(bytes(res))

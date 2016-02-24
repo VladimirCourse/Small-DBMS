@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+form = cgi.FieldStorage()
+data = form.keys()
+fields = {}
+for i in data:
+	fields[i] = form.getfirst(i)
+
+err = 1
+alert = ""
+if len(fields) < 2:
+	alert = "You should enter all fields!"
+else:
+	if not check_login(fields):
+		alert = "Wrong email or password!"
+	else:
+		set_cookie(fields)
+		err = 0
+
+print_head()
+print_header(check_cookie())
+if err:
+	print_alert(alert)
+	print_login()
+else:
+	print_ok("You are logged in!")
+
+print_footer()

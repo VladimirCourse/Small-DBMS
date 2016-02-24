@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+print_head()
+print_header(check_cookie())
+print_articles_search()
+
+stor = get_storage_params(cgi.FieldStorage())
+params = stor[0]
+param_str = stor[1]
+
+offset = cgi.FieldStorage().getfirst("page")
+
+off = calculate_offset(offset)
+p_range = off[0]
+offset = off[1]
+
+count = print_content_articles(params, offset)
+
+print_paginator("articles", count, param_str, p_range)
+
+print_footer()

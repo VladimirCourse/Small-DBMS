@@ -1,0 +1,107 @@
+
+.head-block,.top-menu,.top-material,.left-sidebar,.content,.content-full{
+    margin-bottom:5px;
+}
+/*ВЫСОТА ШАПКИ*/
+
+.nav-title{
+	margin-top: -5px;
+}
+
+.nav li a  {
+    color: white;
+}
+.nav li a:hover{
+	background-color: #814D32;
+	border-color: #814D32;
+}
+
+.pages a{
+
+	color: black;
+}
+
+.pages li a{
+	color: black;
+}
+
+.pagination li.active a{
+	background-color: #CD7345;
+	border-color: #CD7345;
+}
+
+.pagination li.active a:hover{
+	background-color: #814D32;
+	border-color: #814D32;
+}
+
+.pagination li a:hover{
+	color: black;
+}
+
+.search-btn{
+	background-color: #CD7345;
+	border-color: #CD7345;
+	color: white;
+}
+
+.search-btn:hover, .search-btn:active, .search-btn:focus{
+	background-color: #814D32;
+	border-color: #814D32;
+	color: white;
+}
+
+.reg-btn{
+	width: 100px;
+}
+
+.article-head {
+	margin-top: 10px;
+	font-size:20;
+}
+
+.article {
+	margin-top: 8px;
+}
+
+.searcher{
+	margin-top: 10px;
+}
+
+.head-block{
+    height:150px;
+    background-image:url(../images/head.png) ;
+}
+/*ВЫСОТА МЕНЮ*/
+.top-menu{
+	background:#CD7345;
+    height:50px;
+}
+/*ВЫСОТА БЛОКА ВАЖНЫЕ МАТЕРИАЛЫ*/
+.top-material{
+    height: 150px;
+}
+/*ВЫСОТА САЙДБАРА И БЛОКА КОНТЕНТ*/
+.left-sidebar{
+ 	border-right: 1px solid #CD7345;
+ 	height: 550px;
+}
+
+.content,.content-full{
+    height:800px;
+}
+/*ГРАНИЦА У КОНТЕНТА*/
+.content{
+    border-left: 5px solid #fff;
+}
+.content-full{
+
+}
+
+.elem-mgn{
+	margin-top: 8px;
+}
+
+.search-chbox{
+	padding-left: 40px;
+}

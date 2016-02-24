@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+db = DataBase('postgres', 'postgres', 5433, 'publications')
+
+print_head()
+print_header(check_cookie())
+print_search("keywords")
+
+pid = cgi.FieldStorage().getfirst("id")
+
+offset = cgi.FieldStorage().getfirst("page")
+
+off = calculate_offset(offset)
+p_range = off[0]
+offset = off[1]
+
+stor = get_storage_params(cgi.FieldStorage())
+params = stor[0]
+param_str = stor[1]
+
+print_keyword_articles(pid, offset)
+
+count = get_keyword_article_count(pid)[0][0]
+print_single_paginator("keyword", int(count), param_str, p_range)
+
+print_footer()

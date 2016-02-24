@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+ # -*- coding: utf-8 -*- 
+
+from database import *
+from helpers import *
+from print_helpers import *
+import cgi
+
+print_head()
+print_header(check_cookie())
+
+print_login()
+
+print_footer()
